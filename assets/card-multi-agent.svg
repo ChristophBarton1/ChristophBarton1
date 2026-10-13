@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-label="Multi-Agent Terminal. A Claude Code hook that asks GPT and Grok in parallel and merges their answers as context.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="296" viewBox="0 0 1200 296" role="img" aria-label="Multi-Agent Terminal. Developer tool  ·  Open source. A Claude Code hook that asks GPT and Grok in parallel and hands their answers to Claude as extra context.">
 <style>
-  :root{--fg:#1f2328;--muted:#59636e;--subtle:#818b98;--line:#d1d9e0;--card:#f6f8fa;--panel:#ffffff;--accent:#4f46e5;--ok:#1a7f37;
-        --l0:#eff2f5;--l1:#c7d2fe;--l2:#a5b4fc;--l3:#6366f1;--l4:#4338ca;--paper:#ffffff}
-  @media (prefers-color-scheme: dark){:root{--fg:#f0f6fc;--muted:#9198a1;--subtle:#6e7681;--line:#3d444d;--card:#151b23;--panel:#0d1117;--accent:#8b8cf8;--ok:#3fb950;
+  :root{--fg:#1f2328;--muted:#59636e;--subtle:#818b98;--line:#d8dee4;--card:#f3f5f7;--panel:#ffffff;--accent:#4f46e5;--ok:#1a7f37;
+        --l0:#eaeef2;--l1:#c7d2fe;--l2:#a5b4fc;--l3:#6366f1;--l4:#4338ca;--paper:#ffffff}
+  @media (prefers-color-scheme: dark){:root{--fg:#f0f6fc;--muted:#9198a1;--subtle:#6e7681;--line:#30363d;--card:#161b22;--panel:#0d1117;--accent:#8b8cf8;--ok:#3fb950;
         --l0:#1b2130;--l1:#2e3270;--l2:#4348b0;--l3:#6366f1;--l4:#a5b4fc;--paper:#e9edf2}}
   .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif}
   .mono{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
@@ -11,24 +11,21 @@
   .l0{fill:var(--l0)}.l1{fill:var(--l1)}.l2{fill:var(--l2)}.l3{fill:var(--l3)}.l4{fill:var(--l4)}
   .in{opacity:0;animation:in .6s ease-out forwards}
   @keyframes in{to{opacity:1}}
-  @keyframes wave{0%,100%{opacity:0}45%,55%{opacity:.95}}
-  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-  @keyframes scan{0%{transform:translateY(0)}50%{transform:translateY(150px)}100%{transform:translateY(0)}}
+  @keyframes wave{0%,100%{opacity:0}45%,55%{opacity:.9}}
+  @keyframes scan{0%{transform:translateY(0)}50%{transform:translateY(140px)}100%{transform:translateY(0)}}
   @keyframes dash{to{stroke-dashoffset:-24}}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
   .wave{opacity:0;animation:wave 4.2s ease-in-out infinite}
-  .blink{animation:blink 1.1s step-end infinite}
   .scan{animation:scan 3.6s ease-in-out infinite}
   .flow{stroke-dasharray:6 6;animation:dash 1s linear infinite}
-  .float{animation:float 3s ease-in-out infinite}
 </style>
 <g class="sans">
-<rect x="0.5" y="0.5" width="599" height="339" rx="16" class="card line"/><rect x="24" y="0" width="552" height="3" rx="1.5" fill="#8e4ec6"/>
-<g transform="translate(24,24)"><rect width="552" height="124" rx="12" class="panel line"/><path d="M150,32 C235,32 235,62 320,62" fill="none" stroke="#d97757" stroke-width="2" class="flow"/><rect x="24" y="19" width="126" height="26" rx="13" fill="#d97757" fill-opacity=".14" stroke="#d97757" stroke-opacity=".6"/><circle cx="40" cy="32" r="5" fill="#d97757"/><text x="54" y="37" class="fg" font-size="13" font-weight="600">Claude</text><path d="M150,62 C235,62 235,62 320,62" fill="none" stroke="#10a37f" stroke-width="2" class="flow"/><rect x="24" y="49" width="126" height="26" rx="13" fill="#10a37f" fill-opacity=".14" stroke="#10a37f" stroke-opacity=".6"/><circle cx="40" cy="62" r="5" fill="#10a37f"/><text x="54" y="67" class="fg" font-size="13" font-weight="600">GPT</text><path d="M150,92 C235,92 235,62 320,62" fill="none" stroke="#8b8cf8" stroke-width="2" class="flow"/><rect x="24" y="79" width="126" height="26" rx="13" fill="#8b8cf8" fill-opacity=".14" stroke="#8b8cf8" stroke-opacity=".6"/><circle cx="40" cy="92" r="5" fill="#8b8cf8"/><text x="54" y="97" class="fg" font-size="13" font-weight="600">Grok</text><rect x="320" y="36" width="208" height="52" rx="12" class="card" stroke="#8e4ec6" stroke-opacity=".7"/><text x="338" y="58" class="mono subtle" font-size="10" letter-spacing="1.5">MERGED CONTEXT</text><text x="338" y="78" class="fg" font-size="13">3 answers, 1 plan</text></g>
-<text x="32" y="186" class="mono subtle" font-size="13" letter-spacing="1.5"><tspan fill="#8e4ec6" font-weight="700">05</tspan>   DEVELOPER TOOL</text><text x="568" y="186" text-anchor="end" class="mono subtle" font-size="13" letter-spacing="1.5">OPEN SOURCE  <tspan fill="#8e4ec6" font-size="16">&#8599;</tspan></text>
-<text x="31" y="224" class="fg" font-size="30" font-weight="650" letter-spacing="-1">Multi-Agent Terminal</text>
-<text x="32" y="256" class="muted" font-size="16.5" >A Claude Code hook that asks GPT and Grok in</text>
-<text x="32" y="280" class="muted" font-size="16.5" >parallel and merges their answers as context.</text>
-<text x="32" y="316" class="mono subtle" font-size="12.5" >Node.js  /  Claude Code  /  OpenAI  /  xAI</text>
+<text x="0" y="44" class="muted" font-size="15" >Developer tool  ·  Open source</text>
+<text x="-2" y="100" class="fg" font-size="42" font-weight="650" letter-spacing="-1.5">Multi-Agent Terminal</text>
+<text x="0" y="144" class="muted" font-size="19" >A Claude Code hook that asks GPT and Grok</text>
+<text x="0" y="173" class="muted" font-size="19" >in parallel and hands their answers to Claude</text>
+<text x="0" y="202" class="muted" font-size="19" >as extra context.</text>
+<text x="0" y="250" class="subtle" font-size="15" >Node.js, Claude Code, OpenAI, xAI</text>
+<g transform="translate(640,24)"><rect width="560" height="236" rx="12" class="card"/><path d="M130,64 C230,64 230,118 330,118" fill="none" stroke="#d97757" stroke-width="2" class="flow"/><circle cx="40" cy="64" r="6" fill="#d97757"/><text x="56" y="69" class="fg" font-size="15" font-weight="600">Claude</text><path d="M130,118 C230,118 230,118 330,118" fill="none" stroke="#10a37f" stroke-width="2" class="flow"/><circle cx="40" cy="118" r="6" fill="#10a37f"/><text x="56" y="123" class="fg" font-size="15" font-weight="600">GPT</text><path d="M130,172 C230,172 230,118 330,118" fill="none" stroke="#8b8cf8" stroke-width="2" class="flow"/><circle cx="40" cy="172" r="6" fill="#8b8cf8"/><text x="56" y="177" class="fg" font-size="15" font-weight="600">Grok</text><rect x="330" y="82" width="206" height="72" rx="10" class="panel"/><text x="348" y="112" class="fg" font-size="15" font-weight="600">Merged context</text><text x="348" y="136" class="muted" font-size="13" >3 answers, 1 plan</text></g>
+<line x1="0" y1="295.5" x2="1200" y2="295.5" class="line"/>
 </g>
 </svg>

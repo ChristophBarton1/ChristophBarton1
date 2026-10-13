@@ -12,7 +12,7 @@
 
 I'm a full-stack web developer based in Vienna. Most of my work sits on the front end: interfaces, design systems and the small interactions that make a product feel finished. I also build what sits behind it, from APIs and databases to deployment.
 
-I've delivered 15+ websites and web apps for clients and build my own products alongside. Right now that's [ggez.gg](https://ggez.gg), a stats platform for League of Legends players, and [CookFuse](https://cookfuse.app), a pantry and recipe app. I work in German and English.
+Alongside client work I build my own products. Right now that's [ggez.gg](https://ggez.gg), a stats platform for League of Legends players, and [CookFuse](https://cookfuse.app), a pantry and recipe app. I work in German and English.
 
 <br/>
 
@@ -39,10 +39,10 @@ I've delivered 15+ websites and web apps for clients and build my own products a
 
 <a href="https://ggez.gg"><img src="assets/card-ggez.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
 <a href="https://cookfuse.app"><img src="assets/card-cookfuse.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
-<img src="assets/card-promptshelf.svg" width="49%" alt="PromptShelf (private)" />
-<a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg" width="49%" alt="Context Grabber" /></a>
-<a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg" width="49%" alt="Multi-Agent Terminal" /></a>
-<a href="https://github.com/ChristophBarton1/Slay-the-Spire-2-Plattform-Free"><img src="assets/card-sts2.svg" width="49%" alt="STS2 Hub" /></a>
+<img src="assets/card-promptshelf.svg" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
+<a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg" width="100%" alt="Context Grabber: one-click bug reports for AI-built apps" /></a>
+<a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg" width="100%" alt="Multi-Agent Terminal: Claude, GPT and Grok in parallel" /></a>
+<a href="https://github.com/ChristophBarton1/Slay-the-Spire-2-Plattform-Free"><img src="assets/card-sts2.svg" width="100%" alt="STS2 Hub: fan-made Slay the Spire 2 hub" /></a>
 
 <sub>Private codebases can be walked through on request. Case studies for client work are on <a href="https://christophbarton.com">christophbarton.com</a>.</sub>
 
