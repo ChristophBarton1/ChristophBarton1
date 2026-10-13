@@ -28,7 +28,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p dist
+          sudo mkdir -p dist && sudo chown -R "$USER" dist
           gh api graphql \
             -f query='query($u:String!){user(login:$u){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount contributionLevel}}}}}}' \
             -f u='${{ github.repository_owner }}' > dist/contributions.json
