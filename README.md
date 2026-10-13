@@ -20,7 +20,10 @@
   <img src="https://streak-stats.demolab.com?user=ChristophBarton1&background=0B1224&border=1E293B&stroke=334155&ring=818CF8&fire=06B6D4&currStreakNum=FFFFFF&sideNums=FFFFFF&currStreakLabel=A5B4FC&sideLabels=94A3B8&dates=64748B&border_radius=16" width="100%" alt="Contribution stats" />
 </p>
 <p align="center">
-  <img src="https://ghchart.rshah.org/6366f1/ChristophBarton1" width="100%" alt="Contribution calendar" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ChristophBarton1/ChristophBarton1/output/snake-dark.svg" />
+    <img src="https://raw.githubusercontent.com/ChristophBarton1/ChristophBarton1/output/snake-light.svg" width="100%" alt="Contribution calendar" />
+  </picture>
 </p>
 <p align="center"><sub>Most of my work lives in private client & product repositories — the graph counts them too.</sub></p>
 
