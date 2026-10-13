@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240" role="img" aria-label="Tech stack: LANGUAGES: TypeScript, JavaScript, PHP, Java, Dart; FRONT-END: SvelteKit / Svelte, Nuxt / Vue, Next.js / React, Astro, Tailwind CSS; MOBILE &amp; BACK-END: React Native / Expo, Flutter, Node.js / Hono, REST / GraphQL, WordPress; DATA &amp; INFRA: Cloudflare Workers / D1, Turso / SQLite, Drizzle ORM, Vercel, Figma">
+<style>
+  :root{--fg:#1f2328;--muted:#59636e;--subtle:#818b98;--line:#d1d9e0;--card:#f6f8fa;--accent:#4f46e5;--ok:#1a7f37}
+  @media (prefers-color-scheme: dark){:root{--fg:#f0f6fc;--muted:#9198a1;--subtle:#6e7681;--line:#3d444d;--card:#151b23;--accent:#8b8cf8;--ok:#3fb950}}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
+  .fg{fill:var(--fg)}.muted{fill:var(--muted)}.subtle{fill:var(--subtle)}.accent{fill:var(--accent)}.ok{fill:var(--ok)}
+  .line{stroke:var(--line)}.card{fill:var(--card)}
+  .in{opacity:0;animation:in .7s ease-out forwards}
+  @keyframes in{to{opacity:1}}
+</style>
+<g class="sans">
+  <line x1="0" y1="0.5" x2="1200" y2="0.5" class="line" stroke-width="1"/>
+  <text x="0" y="40" class="mono subtle" font-size="13" letter-spacing="2">LANGUAGES</text>
+  <text x="0" y="80" class="fg" font-size="20">TypeScript</text>
+  <text x="0" y="112" class="fg" font-size="20">JavaScript</text>
+  <text x="0" y="144" class="fg" font-size="20">PHP</text>
+  <text x="0" y="176" class="fg" font-size="20">Java</text>
+  <text x="0" y="208" class="fg" font-size="20">Dart</text>
+  <text x="300" y="40" class="mono subtle" font-size="13" letter-spacing="2">FRONT-END</text>
+  <text x="300" y="80" class="fg" font-size="20">SvelteKit / Svelte</text>
+  <text x="300" y="112" class="fg" font-size="20">Nuxt / Vue</text>
+  <text x="300" y="144" class="fg" font-size="20">Next.js / React</text>
+  <text x="300" y="176" class="fg" font-size="20">Astro</text>
+  <text x="300" y="208" class="fg" font-size="20">Tailwind CSS</text>
+  <text x="600" y="40" class="mono subtle" font-size="13" letter-spacing="2">MOBILE &amp; BACK-END</text>
+  <text x="600" y="80" class="fg" font-size="20">React Native / Expo</text>
+  <text x="600" y="112" class="fg" font-size="20">Flutter</text>
+  <text x="600" y="144" class="fg" font-size="20">Node.js / Hono</text>
+  <text x="600" y="176" class="fg" font-size="20">REST / GraphQL</text>
+  <text x="600" y="208" class="fg" font-size="20">WordPress</text>
+  <text x="900" y="40" class="mono subtle" font-size="13" letter-spacing="2">DATA &amp; INFRA</text>
+  <text x="900" y="80" class="fg" font-size="20">Cloudflare Workers / D1</text>
+  <text x="900" y="112" class="fg" font-size="20">Turso / SQLite</text>
+  <text x="900" y="144" class="fg" font-size="20">Drizzle ORM</text>
+  <text x="900" y="176" class="fg" font-size="20">Vercel</text>
+  <text x="900" y="208" class="fg" font-size="20">Figma</text>
+  <line x1="0" y1="239.5" x2="1200" y2="239.5" class="line" stroke-width="1"/>
+</g>
+</svg>
