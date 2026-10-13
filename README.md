@@ -28,14 +28,17 @@ I've delivered 15+ websites and web apps for clients and build my own products a
   <img src="https://raw.githubusercontent.com/ChristophBarton1/ChristophBarton1/output/snake-light.svg" width="100%" alt="Contribution calendar" />
 </picture>
 
-<sub>Most of my work happens in private client and product repositories. The numbers above include those contributions.</sub>
+<p>
+  <a href="https://christophbarton1.github.io/ChristophBarton1/"><b>Play snake on my contribution graph &#8599;</b></a><br/>
+  <sub>Most of my work happens in private client and product repositories. The numbers above include those contributions.</sub>
+</p>
 
 <br/><br/>
 
 ### Selected work
 
-<a href="https://ggez.gg"><img src="assets/card-ggez.svg" width="49%" alt="ggez.gg" /></a>
-<a href="https://cookfuse.app"><img src="assets/card-cookfuse.svg" width="49%" alt="CookFuse" /></a>
+<a href="https://ggez.gg"><img src="assets/card-ggez.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
+<a href="https://cookfuse.app"><img src="assets/card-cookfuse.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
 <img src="assets/card-promptshelf.svg" width="49%" alt="PromptShelf (private)" />
 <a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg" width="49%" alt="Context Grabber" /></a>
 <a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg" width="49%" alt="Multi-Agent Terminal" /></a>

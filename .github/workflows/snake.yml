@@ -15,12 +15,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+
       - uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/snake-dark.svg?color_snake=#f0f6fc&color_background=#00000000&color_dots=#151b23,#2e3270,#4348b0,#6366f1,#a5b4fc
+            dist/snake-dark.svg?color_snake=#f0f6fc&color_dots=#151b23,#2e3270,#4348b0,#6366f1,#a5b4fc
             dist/snake-light.svg?color_snake=#1f2328&color_dots=#eff2f5,#c7d2fe,#a5b4fc,#6366f1,#4338ca
+
+      - name: Export contributions and game
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p dist
+          gh api graphql \
+            -f query='query($u:String!){user(login:$u){contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{date contributionCount contributionLevel}}}}}}' \
+            -f u='${{ github.repository_owner }}' > dist/contributions.json
+          cp game/index.html dist/index.html
+          touch dist/.nojekyll
 
       - uses: crazy-max/ghaction-github-pages@v4
         with:
