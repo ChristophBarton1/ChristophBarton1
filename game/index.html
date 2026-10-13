@@ -21,7 +21,7 @@
   .mono{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
   main{width:100%;max-width:1100px}
   .top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px}
-  .label{font-size:12px;letter-spacing:.16em;color:var(--subtle);text-transform:uppercase}
+  .label{font-size:14px;color:var(--subtle)}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
   h1{font-size:clamp(32px,6vw,56px);letter-spacing:-.03em;font-weight:650;margin:28px 0 8px;line-height:1.05}
@@ -40,18 +40,20 @@
   button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:10px 20px}
   button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
   button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .pad{display:none;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,56px);gap:8px;justify-content:center;margin-top:18px}
-  .pad button{padding:0;font-size:20px;border-radius:14px}
+  .pad{display:none;grid-template-columns:repeat(3,76px);grid-template-rows:repeat(2,64px);gap:10px;justify-content:center;margin-top:14px;touch-action:none}
+  .pad button{padding:0;font-size:24px;border-radius:14px;touch-action:none;-webkit-tap-highlight-color:transparent}
+  .pad button:active{background:var(--card)}
   .pad .up{grid-column:2}.pad .left{grid-column:1;grid-row:2}.pad .down{grid-column:2;grid-row:2}.pad .right{grid-column:3;grid-row:2}
-  @media (pointer:coarse){.pad{display:grid}}
   .keys{color:var(--subtle);font-size:13px;margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 18px}
   kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px;font-size:12px;color:var(--fg)}
   footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  @media (pointer:coarse),(max-width:700px){.pad{display:grid}.keys{display:none}.stage{padding:12px;min-height:0}}
+  .stage{scroll-margin-top:12px}
 </style>
 </head>
 <body>
 <main>
-  <div class="top mono">
+  <div class="top">
     <span class="label">github.com/ChristophBarton1</span>
     <a class="label" href="https://github.com/ChristophBarton1">Back to profile &#8599;</a>
   </div>
@@ -60,10 +62,10 @@
   <p class="lead">Every square is a real day from my last twelve months on GitHub. Eat the contributions, don't bite yourself. Busy days make you grow. Edges wrap around.</p>
 
   <div class="hud">
-    <div><span class="label mono">Eaten</span><b id="score">0</b></div>
-    <div><span class="label mono">Of total</span><b id="total">0</b></div>
-    <div><span class="label mono">Length</span><b id="length">3</b></div>
-    <div><span class="label mono">Best</span><b id="best">0</b></div>
+    <div><span class="label">Eaten</span><b id="score">0</b></div>
+    <div><span class="label">Of total</span><b id="total">0</b></div>
+    <div><span class="label">Length</span><b id="length">3</b></div>
+    <div><span class="label">Best</span><b id="best">0</b></div>
   </div>
 
   <div class="stage" id="stage">
@@ -102,7 +104,7 @@
   const canvas = $('board'), ctx = canvas.getContext('2d'), stage = $('stage');
 
   let weeks = [];           // weeks[w][d] = {count, level} | null
-  let W = 0, H = 0, transposed = false, cell = 12, gap = 3;
+  let W = 0, H = 0, cell = 12, gap = 3;
   let grid, snake, dir, queue, grow, eaten, eatenCount, totalCount, totalCells, timer, running = false, paused = false, dead = false;
 
   const store = {
@@ -146,20 +148,27 @@
     }
   }
 
-  // logical board <-> calendar (transposed on narrow screens)
+  // logical board <-> calendar. Wide: 53 weeks x 7 days. Narrow: K weeks side by side per row.
+  let mode = 'wide', K = 1;
   function layout() {
-    const avail = stage.clientWidth - 36;
-    transposed = avail < 620;
-    W = transposed ? 7 : weeks.length;
-    H = transposed ? weeks.length : 7;
-    if (transposed) {
-      cell = Math.max(8, Math.min(30, Math.floor((avail - gap * (W - 1)) / W)));
-      const maxH = Math.max(320, window.innerHeight * .78);
-      cell = Math.min(cell, Math.floor((maxH - gap * (H - 1)) / H));
+    const narrow = stage.clientWidth < 660;
+    const avail = stage.clientWidth - (narrow ? 24 : 36);
+    const n = weeks.length;
+    if (!narrow) {
+      mode = 'wide'; K = 1; W = n; H = 7;
+      cell = Math.max(6, Math.min(24, Math.floor((avail - 3 * (W - 1)) / W)));
     } else {
-      cell = Math.max(6, Math.min(24, Math.floor((avail - gap * (W - 1)) / W)));
+      mode = 'fold';
+      const maxH = Math.max(200, window.innerHeight - 250);
+      let best = null;
+      for (let k = 1; k <= 9; k++) {
+        const cols = 7 * k, rows = Math.ceil(n / k);
+        const c = Math.min(Math.floor((avail - 2 * (cols - 1)) / cols), Math.floor((maxH - 2 * (rows - 1)) / rows));
+        if (!best || c > best.c) best = { k, c, cols, rows };
+      }
+      K = best.k; W = best.cols; H = best.rows; cell = Math.min(26, best.c);
     }
-    gap = cell < 10 ? 2 : 3;
+    gap = cell < 12 ? 2 : 3;
     const dpr = window.devicePixelRatio || 1;
     const pw = W * cell + (W - 1) * gap, ph = H * cell + (H - 1) * gap;
     canvas.style.width = pw + 'px';
@@ -168,7 +177,7 @@
     canvas.height = Math.round(ph * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  const calAt = (x, y) => (transposed ? weeks[y]?.[x] : weeks[x]?.[y]) ?? null;
+  const calAt = (x, y) => (mode === 'wide' ? weeks[x]?.[y] : weeks[y * K + Math.floor(x / 7)]?.[x % 7]) ?? null;
 
   function reset() {
     grid = [];
@@ -183,7 +192,7 @@
       grid.push(row);
     }
     const cx = Math.floor(W / 2), cy = Math.floor(H / 2);
-    dir = transposed ? DIRS.down : DIRS.right;
+    dir = DIRS.right;
     snake = [0, 1, 2].map((i) => ({ x: (cx - dir[0] * i + W) % W, y: (cy - dir[1] * i + H) % H }));
     snake.forEach((s) => { if (grid[s.y][s.x]) grid[s.y][s.x].level = 0; });
     queue = []; grow = 0; eaten = 0; eatenCount = 0; dead = false; paused = false;
@@ -231,6 +240,7 @@
   function start() {
     if (dead || !snake) reset();
     $('overlay').hidden = true;
+    if (mode === 'fold') stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
     running = true; paused = false;
     clearTimeout(timer);
     timer = setTimeout(step, speed());
@@ -298,19 +308,21 @@
 
   let touch = null;
   stage.addEventListener('pointerdown', (ev) => { touch = { x: ev.clientX, y: ev.clientY }; });
-  stage.addEventListener('pointerup', (ev) => {
+  stage.addEventListener('pointermove', (ev) => {
     if (!touch) return;
-    const dx = ev.clientX - touch.x, dy = ev.clientY - touch.y; touch = null;
-    if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+    const dx = ev.clientX - touch.x, dy = ev.clientY - touch.y;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) return;
     turn(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+    touch = { x: ev.clientX, y: ev.clientY };
   });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach((t) => stage.addEventListener(t, () => { touch = null; }));
 
   let resizeT;
   window.addEventListener('resize', () => {
     clearTimeout(resizeT);
     resizeT = setTimeout(() => {
-      const wasT = transposed; layout();
-      if (wasT !== transposed) { running = false; clearTimeout(timer); dead = true; reset(); $('ovTitle').textContent = 'Ready?'; $('startBtn').textContent = 'Start game'; $('overlay').hidden = false; }
+      const before = mode + K + W; layout();
+      if (before !== mode + K + W) { running = false; clearTimeout(timer); dead = true; reset(); $('ovTitle').textContent = 'Ready?'; $('startBtn').textContent = 'Start game'; $('overlay').hidden = false; }
       else draw();
     }, 150);
   });
