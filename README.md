@@ -1,18 +1,17 @@
-<a href="https://christophbarton.com"><img src="assets/header.svg?v=3" width="100%" alt="Christoph Barton. Full-stack web developer with a focus on the front end. Vienna, Austria." /></a>
+<a href="https://christophbarton.com"><img src="assets/header.svg?v=4" width="100%" alt="Christoph Barton, full-stack developer in Vienna. I build web products that feel finished. Building ggez.gg, shipping CookFuse, open to new roles." /></a>
 
 <p>
-  <a href="https://christophbarton.com"><b>christophbarton.com</b></a> &nbsp;/&nbsp;
-  <a href="https://ggez.gg">ggez.gg</a> &nbsp;/&nbsp;
-  <a href="https://cookfuse.app">cookfuse.app</a>
+  <b>Portfolio</b> <a href="https://christophbarton.com">christophbarton.com</a> &nbsp;&nbsp;·&nbsp;&nbsp;
+  <b>Products</b> <a href="https://ggez.gg">ggez.gg</a>, <a href="https://cookfuse.app">cookfuse.app</a>
 </p>
 
 <br/>
 
 ### About
 
-I'm a full-stack web developer based in Vienna. Most of my work sits on the front end: interfaces, design systems and the small interactions that make a product feel finished. I also build what sits behind it, from APIs and databases to deployment.
+Hi, I'm Christoph. I build for the web, mostly on the front end: interfaces, design systems and the small interactions that make a product feel finished. When a project needs it, I also build what sits behind it, from APIs and databases to deployment.
 
-Alongside client work I build my own products. Right now that's [ggez.gg](https://ggez.gg), a stats platform for League of Legends players, and [CookFuse](https://cookfuse.app), a pantry and recipe app. I work in German and English.
+Next to client work I run my own products. [ggez.gg](https://ggez.gg) is a stats platform with an AI coach for League of Legends players, [CookFuse](https://cookfuse.app) turns a photo of a grocery receipt into recipes. I work in German and English.
 
 <br/>
 
