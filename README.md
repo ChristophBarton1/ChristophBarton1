@@ -1,4 +1,4 @@
-<a href="https://christophbarton.com"><img src="assets/header.svg?v=4" width="100%" alt="Christoph Barton, full-stack developer in Vienna. I build web products that feel finished. Building ggez.gg, shipping CookFuse, open to new roles." /></a>
+<a href="https://christophbarton.com"><img src="assets/header.svg?v=5" width="100%" alt="Christoph Barton, full-stack developer in Vienna. I build web products that feel finished. Building ggez.gg, shipping CookFuse, open to new roles." /></a>
 
 <p>
   <b>Portfolio</b> <a href="https://christophbarton.com">christophbarton.com</a> &nbsp;&nbsp;·&nbsp;&nbsp;
