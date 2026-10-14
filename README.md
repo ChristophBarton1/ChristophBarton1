@@ -36,7 +36,7 @@ Next to client work I run my own products. [ggez.gg](https://ggez.gg) is a stats
 
 ### Selected work
 
-<a href="https://ggez.gg"><img src="assets/card-ggez-hero.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
+<a href="https://ggez.gg"><img src="assets/card-ggez-top.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
 <a href="https://cookfuse.app"><img src="assets/card-cookfuse-shot.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
 <img src="assets/card-promptshelf-shot.svg" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
 <a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg?v=3" width="100%" alt="Context Grabber: one-click bug reports for AI-built apps" /></a>
