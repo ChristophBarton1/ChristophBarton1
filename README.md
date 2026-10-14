@@ -38,6 +38,7 @@ Next to client work I run my own products. [ggez.gg](https://ggez.gg) is a stats
 
 <a href="https://ggez.gg"><img src="assets/card-ggez-top.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
 <a href="https://cookfuse.app"><img src="assets/card-cookfuse-shot.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
+<a href="https://earth-mood-news.vercel.app"><img src="assets/card-earthmood-globe.svg" width="100%" alt="Earth Mood News: a rotating globe coloured by the tone of each country's news" /></a>
 <img src="assets/card-promptshelf-shot.svg" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
 <a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg?v=3" width="100%" alt="Context Grabber: one-click bug reports for AI-built apps" /></a>
 <a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg?v=3" width="100%" alt="Multi-Agent Terminal: Claude, GPT and Grok in parallel" /></a>
@@ -62,7 +63,6 @@ Next to client work I run my own products. [ggez.gg](https://ggez.gg) is a stats
 | [Style Studio](https://github.com/ChristophBarton1/Css-Studio) | Backend for capturing a site's design and exporting it to coding tools | TypeScript, Hono |
 | [Insight Analytics](https://github.com/ChristophBarton1/Finance-Business-Dashboard-React) | Business intelligence dashboard with charts and a mock API | React, Vite, Recharts |
 | [BalanceFlow](https://github.com/ChristophBarton1/Java---Finance-Dashboard-DesktopApp) | Personal finance desktop app | Java, JavaFX |
-| [Global Mood Map](https://earth-mood-news.vercel.app) | 3D globe colouring countries by news sentiment | D3.js |
 
 <br/>
 
