@@ -36,12 +36,12 @@ Next to client work I run my own products. [ggez.gg](https://ggez.gg) is a stats
 
 ### Selected work
 
-<a href="https://ggez.gg"><img src="assets/card-ggez-shot.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
+<a href="https://ggez.gg"><img src="assets/card-ggez-hero.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
 <a href="https://cookfuse.app"><img src="assets/card-cookfuse-shot.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
-<img src="assets/card-promptshelf.svg?v=3" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
+<img src="assets/card-promptshelf-shot.svg" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
 <a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg?v=3" width="100%" alt="Context Grabber: one-click bug reports for AI-built apps" /></a>
 <a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg?v=3" width="100%" alt="Multi-Agent Terminal: Claude, GPT and Grok in parallel" /></a>
-<a href="https://github.com/ChristophBarton1/Slay-the-Spire-2-Plattform-Free"><img src="assets/card-sts2.svg?v=3" width="100%" alt="STS2 Hub: fan-made Slay the Spire 2 hub" /></a>
+<a href="https://github.com/ChristophBarton1/Slay-the-Spire-2-Plattform-Free"><img src="assets/card-sts2-shot.svg" width="100%" alt="STS2 Hub: fan-made Slay the Spire 2 hub" /></a>
 
 <sub>Private codebases can be walked through on request. Case studies for client work are on <a href="https://christophbarton.com">christophbarton.com</a>.</sub>
 
