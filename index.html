@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contribution Snake · Christoph Barton</title>
+<meta name="description" content="Play snake on Christoph Barton's GitHub contribution graph.">
+<style>
+  :root{
+    --bg:#ffffff;--fg:#1f2328;--muted:#59636e;--subtle:#818b98;--line:#d1d9e0;--card:#f6f8fa;--accent:#4f46e5;
+    --l0:#eff2f5;--l1:#c7d2fe;--l2:#a5b4fc;--l3:#6366f1;--l4:#4338ca;--snake:#1f2328;--head:#4f46e5;--bad:#cf222e;
+  }
+  @media (prefers-color-scheme: dark){:root{
+    --bg:#0d1117;--fg:#f0f6fc;--muted:#9198a1;--subtle:#6e7681;--line:#3d444d;--card:#151b23;--accent:#8b8cf8;
+    --l0:#1b2130;--l1:#2e3270;--l2:#4348b0;--l3:#6366f1;--l4:#a5b4fc;--snake:#f0f6fc;--head:#8b8cf8;--bad:#f85149;
+  }}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg)}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;
+       min-height:100vh;display:flex;justify-content:center;padding:32px 16px 48px}
+  .mono{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace}
+  main{width:100%;max-width:1100px}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px}
+  .label{font-size:14px;color:var(--subtle)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1{font-size:clamp(32px,6vw,56px);letter-spacing:-.03em;font-weight:650;margin:28px 0 8px;line-height:1.05}
+  h1 span{color:var(--accent)}
+  .lead{color:var(--muted);font-size:clamp(15px,2vw,18px);margin:0 0 28px;max-width:640px}
+  .hud{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:20px}
+  .hud div{padding:14px 0}
+  .hud b{display:block;font-size:clamp(20px,3.4vw,30px);font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stage{min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;touch-action:none;user-select:none}
+  canvas{display:block;margin:0 auto}
+  .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+           background:color-mix(in srgb,var(--card) 82%,transparent);border-radius:16px;text-align:center;padding:16px}
+  .overlay[hidden]{display:none}
+  .overlay h2{margin:0;font-size:clamp(22px,4vw,32px);letter-spacing:-.02em}
+  .overlay p{margin:0;color:var(--muted)}
+  button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:10px 20px}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .pad{display:none;grid-template-columns:repeat(3,76px);grid-template-rows:repeat(2,64px);gap:10px;justify-content:center;margin-top:14px;touch-action:none}
+  .pad button{padding:0;font-size:24px;border-radius:14px;touch-action:none;-webkit-tap-highlight-color:transparent}
+  .pad button:active{background:var(--card)}
+  .pad .up{grid-column:2}.pad .left{grid-column:1;grid-row:2}.pad .down{grid-column:2;grid-row:2}.pad .right{grid-column:3;grid-row:2}
+  .keys{color:var(--subtle);font-size:13px;margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 18px}
+  kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 6px;font-size:12px;color:var(--fg)}
+  footer{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  @media (pointer:coarse),(max-width:700px){.pad{display:grid}.keys{display:none}.stage{padding:12px;min-height:0}}
+  .stage{scroll-margin-top:12px}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <span class="label">github.com/ChristophBarton1</span>
+    <a class="label" href="https://github.com/ChristophBarton1">Back to profile &#8599;</a>
+  </div>
+
+  <h1>Contribution Snake<span>.</span></h1>
+  <p class="lead">Every square is a real day from my last twelve months on GitHub. Eat the contributions, don't bite yourself. Busy days make you grow. Edges wrap around.</p>
+
+  <div class="hud">
+    <div><span class="label">Eaten</span><b id="score">0</b></div>
+    <div><span class="label">Of total</span><b id="total">0</b></div>
+    <div><span class="label">Length</span><b id="length">3</b></div>
+    <div><span class="label">Best</span><b id="best">0</b></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="board" aria-label="Game board: contribution calendar"></canvas>
+    <div class="overlay" id="overlay">
+      <h2 id="ovTitle">Ready?</h2>
+      <p id="ovText">Arrow keys, WASD or swipe to steer.</p>
+      <button class="primary" id="startBtn">Start game</button>
+    </div>
+  </div>
+
+  <div class="pad" aria-label="Direction controls">
+    <button class="up" data-dir="up" aria-label="Up">&#8593;</button>
+    <button class="left" data-dir="left" aria-label="Left">&#8592;</button>
+    <button class="down" data-dir="down" aria-label="Down">&#8595;</button>
+    <button class="right" data-dir="right" aria-label="Right">&#8594;</button>
+  </div>
+
+  <div class="keys mono">
+    <span><kbd>&#8593;</kbd> <kbd>&#8595;</kbd> <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> or <kbd>WASD</kbd> steer</span>
+    <span><kbd>Space</kbd> pause</span>
+    <span><kbd>R</kbd> restart</span>
+  </div>
+
+  <footer>
+    <span>Built by <a href="https://christophbarton.com">Christoph Barton</a></span>
+    <span class="mono" id="updated"></span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const LEVEL = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 };
+  const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  const $ = (id) => document.getElementById(id);
+  const canvas = $('board'), ctx = canvas.getContext('2d'), stage = $('stage');
+
+  let weeks = [];           // weeks[w][d] = {count, level} | null
+  let W = 0, H = 0, cell = 12, gap = 3;
+  let grid, snake, dir, queue, grow, eaten, eatenCount, totalCount, totalCells, timer, running = false, paused = false, dead = false;
+
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} }
+  };
+  const fmt = (n) => n.toLocaleString('en-US');
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  function fallbackData() {
+    const out = [];
+    for (let w = 0; w < 53; w++) {
+      const wk = [];
+      for (let d = 0; d < 7; d++) {
+        const level = Math.random() < .25 ? 0 : 1 + Math.floor(Math.random() * 4);
+        wk.push({ count: level ? level * 4 + Math.floor(Math.random() * 6) : 0, level });
+      }
+      out.push(wk);
+    }
+    return out;
+  }
+
+  async function load() {
+    try {
+      const res = await fetch('contributions.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error(res.status);
+      const json = await res.json();
+      const cal = json.data.user.contributionsCollection.contributionCalendar;
+      weeks = cal.weeks.map((w) => {
+        const days = Array(7).fill(null);
+        w.contributionDays.forEach((d) => {
+          days[new Date(d.date + 'T00:00:00Z').getUTCDay()] = { count: d.contributionCount, level: LEVEL[d.contributionLevel] ?? 0 };
+        });
+        return days;
+      });
+      const last = cal.weeks.at(-1)?.contributionDays.at(-1)?.date;
+      if (last) $('updated').textContent = 'Data up to ' + last;
+    } catch {
+      weeks = fallbackData();
+      $('updated').textContent = 'Demo data';
+    }
+  }
+
+  // logical board <-> calendar. Wide: 53 weeks x 7 days. Narrow: K weeks side by side per row.
+  let mode = 'wide', K = 1;
+  function layout() {
+    const narrow = stage.clientWidth < 660;
+    const avail = stage.clientWidth - (narrow ? 24 : 36);
+    const n = weeks.length;
+    if (!narrow) {
+      mode = 'wide'; K = 1; W = n; H = 7;
+      cell = Math.max(6, Math.min(24, Math.floor((avail - 3 * (W - 1)) / W)));
+    } else {
+      mode = 'fold';
+      const maxH = Math.max(200, window.innerHeight - 250);
+      let best = null;
+      for (let k = 1; k <= 9; k++) {
+        const cols = 7 * k, rows = Math.ceil(n / k);
+        const c = Math.min(Math.floor((avail - 2 * (cols - 1)) / cols), Math.floor((maxH - 2 * (rows - 1)) / rows));
+        if (!best || c > best.c) best = { k, c, cols, rows };
+      }
+      K = best.k; W = best.cols; H = best.rows; cell = Math.min(26, best.c);
+    }
+    gap = cell < 12 ? 2 : 3;
+    const dpr = window.devicePixelRatio || 1;
+    const pw = W * cell + (W - 1) * gap, ph = H * cell + (H - 1) * gap;
+    canvas.style.width = pw + 'px';
+    canvas.style.height = ph + 'px';
+    canvas.width = Math.round(pw * dpr);
+    canvas.height = Math.round(ph * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  const calAt = (x, y) => (mode === 'wide' ? weeks[x]?.[y] : weeks[y * K + Math.floor(x / 7)]?.[x % 7]) ?? null;
+
+  function reset() {
+    grid = [];
+    totalCount = 0; totalCells = 0;
+    for (let y = 0; y < H; y++) {
+      const row = [];
+      for (let x = 0; x < W; x++) {
+        const c = calAt(x, y);
+        row.push(c ? { ...c } : null);
+        if (c && c.level > 0) { totalCount += c.count; totalCells++; }
+      }
+      grid.push(row);
+    }
+    const cx = Math.floor(W / 2), cy = Math.floor(H / 2);
+    dir = DIRS.right;
+    snake = [0, 1, 2].map((i) => ({ x: (cx - dir[0] * i + W) % W, y: (cy - dir[1] * i + H) % H }));
+    snake.forEach((s) => { if (grid[s.y][s.x]) grid[s.y][s.x].level = 0; });
+    queue = []; grow = 0; eaten = 0; eatenCount = 0; dead = false; paused = false;
+    hud(); draw();
+  }
+
+  function hud() {
+    $('score').textContent = fmt(eatenCount);
+    $('total').textContent = fmt(totalCount);
+    $('length').textContent = snake.length;
+    $('best').textContent = fmt(+store.get('cs-best') || 0);
+  }
+
+  function speed() { return Math.max(55, 135 - eaten * 1.2); }
+
+  function step() {
+    if (queue.length) dir = queue.shift();
+    const head = snake[0];
+    const nx = (head.x + dir[0] + W) % W, ny = (head.y + dir[1] + H) % H;
+    const tailMoves = grow === 0;
+    const hit = snake.some((s, i) => s.x === nx && s.y === ny && !(tailMoves && i === snake.length - 1));
+    if (hit) return over(false);
+    snake.unshift({ x: nx, y: ny });
+    const c = grid[ny][nx];
+    if (c && c.level > 0) {
+      eatenCount += c.count; eaten++; if (c.level >= 3) grow += 1; c.level = 0;
+      if (eaten === totalCells) { draw(); return over(true); }
+    }
+    if (grow > 0) grow--; else snake.pop();
+    hud(); draw();
+    timer = setTimeout(step, speed());
+  }
+
+  function over(won) {
+    running = false; dead = true; clearTimeout(timer);
+    const best = +store.get('cs-best') || 0;
+    if (eatenCount > best) store.set('cs-best', String(eatenCount));
+    hud(); draw();
+    $('ovTitle').textContent = won ? 'You ate the whole year.' : 'Game over';
+    $('ovText').textContent = `${fmt(eatenCount)} of ${fmt(totalCount)} contributions eaten.`;
+    $('startBtn').textContent = 'Play again';
+    $('overlay').hidden = false;
+  }
+
+  function start() {
+    if (dead || !snake) reset();
+    $('overlay').hidden = true;
+    if (mode === 'fold') stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    running = true; paused = false;
+    clearTimeout(timer);
+    timer = setTimeout(step, speed());
+  }
+
+  function togglePause() {
+    if (!running && !paused) return;
+    if (paused) { start(); return; }
+    paused = true; running = false; clearTimeout(timer);
+    $('ovTitle').textContent = 'Paused';
+    $('ovText').textContent = 'Press space or tap to continue.';
+    $('startBtn').textContent = 'Resume';
+    $('overlay').hidden = false;
+  }
+
+  function turn(name) {
+    const d = DIRS[name];
+    const last = queue.length ? queue[queue.length - 1] : dir;
+    if (d[0] === -last[0] && d[1] === -last[1]) return;
+    if (d[0] === last[0] && d[1] === last[1]) return;
+    if (queue.length < 3) queue.push(d);
+    if (!running && !dead && !paused) start();
+  }
+
+  function rr(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+
+  function draw() {
+    const colors = [css('--l0'), css('--l1'), css('--l2'), css('--l3'), css('--l4')];
+    const r = Math.max(2, cell * .22);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const c = grid[y][x];
+      if (!c) continue;
+      ctx.fillStyle = colors[c.level];
+      rr(x * (cell + gap), y * (cell + gap), cell, cell, r); ctx.fill();
+    }
+    const body = css('--snake'), head = css('--head');
+    snake.forEach((s, i) => {
+      ctx.fillStyle = i === 0 ? head : body;
+      ctx.globalAlpha = i === 0 ? 1 : Math.max(.45, 1 - i / (snake.length * 1.4));
+      const inset = i === 0 ? 0 : cell * .1;
+      rr(s.x * (cell + gap) + inset, s.y * (cell + gap) + inset, cell - inset * 2, cell - inset * 2, r); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    if (dead) {
+      const h = snake[0];
+      ctx.strokeStyle = css('--bad'); ctx.lineWidth = 2;
+      rr(h.x * (cell + gap) - 1, h.y * (cell + gap) - 1, cell + 2, cell + 2, r); ctx.stroke();
+    }
+  }
+
+  // input
+  const KEYS = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right', W: 'up', S: 'down', A: 'left', D: 'right' };
+  window.addEventListener('keydown', (ev) => {
+    if (KEYS[ev.key]) { ev.preventDefault(); turn(KEYS[ev.key]); }
+    else if (ev.key === ' ') { ev.preventDefault(); if (!running && !paused) start(); else togglePause(); }
+    else if (ev.key === 'r' || ev.key === 'R') { dead = true; start(); }
+  });
+  document.querySelectorAll('.pad button').forEach((b) => b.addEventListener('pointerdown', (ev) => { ev.preventDefault(); turn(b.dataset.dir); }));
+  $('startBtn').addEventListener('click', start);
+
+  let touch = null;
+  stage.addEventListener('pointerdown', (ev) => { touch = { x: ev.clientX, y: ev.clientY }; });
+  stage.addEventListener('pointermove', (ev) => {
+    if (!touch) return;
+    const dx = ev.clientX - touch.x, dy = ev.clientY - touch.y;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 18) return;
+    turn(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+    touch = { x: ev.clientX, y: ev.clientY };
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach((t) => stage.addEventListener(t, () => { touch = null; }));
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      const before = mode + K + W; layout();
+      if (before !== mode + K + W) { running = false; clearTimeout(timer); dead = true; reset(); $('ovTitle').textContent = 'Ready?'; $('startBtn').textContent = 'Start game'; $('overlay').hidden = false; }
+      else draw();
+    }, 150);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => draw());
+
+  load().then(() => { layout(); reset(); });
+})();
+</script>
+</body>
+</html>
