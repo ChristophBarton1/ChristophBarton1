@@ -6,7 +6,7 @@ I'm a full-stack developer in Vienna. For six years I have built websites and we
 
 ### My own products
 
-**[ggez.gg](https://ggez.gg)** is a statistics site for League of Legends and Teamfight Tactics with an AI coach. A collector takes in about 20 million matches a month from the Riot Games API into a self-hosted ClickHouse, and the site is rendered in 9 languages on Cloudflare. Live since December 2025.
+**[ggez.gg](https://ggez.gg)** is a statistics site for League of Legends and Teamfight Tactics with an AI coach. A collector takes in about 20 million matches a month from the Riot Games API into a self-hosted ClickHouse, and the site is rendered in 9 languages on Cloudflare. Live since December 2025. The current figures are public at [ggez.gg/data](https://ggez.gg/data).
 
 **[CookFuse](https://cookfuse.app)** turns a photo of a grocery receipt into a pantry. Groceries are recognised on the device, tracked by shelf life and turned into recipes before they spoil. React Native, Expo, Cloudflare Workers and D1.
 
@@ -33,6 +33,7 @@ Two smaller tools are public: **[Context Grabber](https://github.com/ChristophBa
 - **Releases that can be undone.** A build goes live only when CI is green, and server deploys roll back with one command.
 - **Systems that run without me.** Collectors and scheduled jobs work around the clock. On ggez.gg a monitor checks the collector every fifteen minutes and mails me when a region falls behind. The database is backed up every night, and the restore is scripted and tested.
 - **Careful with other people's limits.** The match collector reads its rate limits from the API's response headers, claims each match once and retries failures from a queue.
+- **Decisions with a reason.** When ggez.gg's match data outgrew the 10 GB limit of its first database, I moved the analytics to a self-hosted ClickHouse. Statistics pages read aggregate tables built from it.
 - **AI as a tool and as a feature.** I work with Claude Code every day. I have built an AI coach that answers from a player's own match data through tool calls, a chatbot for company websites and an MCP server for Moodle.
 
 <br/>
