@@ -1,4 +1,4 @@
-<a href="https://christophbarton.com"><img src="assets/head.jpg" width="100%" alt="Christoph Barton, full-stack developer in Vienna. I build web products end to end and keep them running. Six years in web teams. Four of my own products, built next to a full-time job: CookFuse (a grocery receipt becomes a pantry and recipes), ggez.gg (20 million matches a month), Earth Mood News (215 countries, every hour) and PromptShelf (reusable prompts, in development)." /></a>
+<a href="https://christophbarton.com"><img src="assets/head.jpg?v=2" width="100%" alt="Christoph Barton, full-stack developer in Vienna. I build web products end to end and keep them running. Six years in web teams. Four of my own products, built next to a full-time job: CookFuse (a grocery receipt becomes a pantry and recipes), ggez.gg (20 million matches a month), Earth Mood News (215 countries, every hour) and PromptShelf (reusable prompts, in development)." /></a>
 
 I'm a full-stack developer in Vienna. For six years I have built websites and web applications in small teams. Next to my job I build my own products and keep them running. Most of my code is in private repositories, so this page describes the work instead of linking to it.
 
@@ -21,7 +21,7 @@ Two smaller tools are public: **[Context Grabber](https://github.com/ChristophBa
 <a href="https://ggez.gg"><img src="assets/card-ggez-top.svg" width="100%" alt="ggez.gg: League of Legends stats, builds, tier lists and an AI coach" /></a>
 <a href="https://cookfuse.app"><img src="assets/card-cookfuse-shot.svg" width="100%" alt="CookFuse: receipt to pantry to recipes" /></a>
 <a href="https://earth-mood-news.vercel.app"><img src="assets/card-earthmood-turn.svg" width="100%" alt="Earth Mood News: a rotating globe coloured by the tone of each country's news" /></a>
-<img src="assets/card-promptshelf-shot.svg" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
+<img src="assets/card-promptshelf-shot.svg?v=2" width="100%" alt="PromptShelf: reusable prompts and mini-tools (private repository)" />
 <a href="https://sts2-hub.pages.dev"><img src="assets/card-sts2-shot.svg" width="100%" alt="STS2 Hub: fan-made Slay the Spire 2 hub with deck builder, card database and guides" /></a>
 <a href="https://github.com/ChristophBarton1/Context-Finder"><img src="assets/card-context-grabber.svg?v=3" width="100%" alt="Context Grabber: one-click bug reports for AI-built apps" /></a>
 <a href="https://github.com/ChristophBarton1/Multi-Agent-for-Terminal-Claude-Open-Ai-Grok"><img src="assets/card-multi-agent.svg?v=3" width="100%" alt="Multi-Agent Terminal: Claude, GPT and Grok in parallel" /></a>
